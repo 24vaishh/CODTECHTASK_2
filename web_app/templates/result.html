@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Scan Results</h1>
+        {% if results and results.items() %}
+            <table>
+                <tr>
+                    <th>Vulnerability</th>
+                    <th>Status</th>
+                </tr>
+                {% for vuln, status in results.items() %}
+                <tr>
+                    <td>{{ vuln }}</td>
+                    <td>{{ status }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>No vulnerabilities detected.</p>
+        {% endif %}
+        <br>
+        <a href="/">Go Back</a>
+    </div>
+</body>
+</html>
